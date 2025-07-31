@@ -33,7 +33,8 @@ swagger = config('SWAGGER', default=True, cast=bool)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blogapp/',include('blogapp.urls'))
+    path('blogapp/',include('blogapp.urls')),
+    path('display/',include('displayapp.urls'))
 ]
 
 if swagger:

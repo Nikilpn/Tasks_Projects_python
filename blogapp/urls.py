@@ -1,5 +1,5 @@
 from django.urls import path
-from blogapp.views import RegisterApiView,UserLoginApiView,AddBlogApiView,ListAllBlog,BlogUpdateApiView,DeleteBlogApiView,ReportBlogApiView
+from blogapp.views import RegisterApiView,UserLoginApiView,AddBlogApiView,ListAllBlog,BlogUpdateApiView,DeleteBlogApiView,ReportBlogApiView,GetReportListView
 
 urlpatterns = [
     path('register/',RegisterApiView.as_view(),name='register_new_user'),
@@ -10,6 +10,9 @@ urlpatterns = [
     path('blog-delete/<int:pk>/',DeleteBlogApiView.as_view(),name='blog-delete'),
     
     #blacklist
-    path('blog-Report/',ReportBlogApiView.as_view(),name='blog-Report')
+    path('blog-Report/',ReportBlogApiView.as_view(),name='blog-Report'),
+    path('blog-report-list/',GetReportListView.as_view(),name='blog-report-list'),
+    
+    
  
 ]

@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from blogapp.models import User,Blog
+from blogapp.models import User,Blog,BlogReport,BlacklistedUser
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import authenticate
+
 
 class RegisterSerializer(serializers.ModelSerializer):
     password=serializers.CharField(max_length=68,write_only=True,min_length=3)
@@ -58,4 +59,23 @@ class BlogSerializer(serializers.ModelSerializer):
         extra_kwargs={
             'owner':{'read_only':True}
         }
+
+class BlogReportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=BlogReport
+        fields=['id','blog','reported_by','reason','description','created_at']
+        extra_kwargs={
+            'reported_by':{'read_only':True}
+        }
+# class BlacklistUserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = BlacklistedUser
+#         fields = ['id', 'user', 'reason', 'blacklisted_at']
+#         extra_kwargs = {
+#             'blacklisted_by': {'read_only': True}
+#         }
         
+    
+
+                  
+   
